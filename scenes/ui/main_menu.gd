@@ -5,9 +5,7 @@ extends CanvasLayer
 
 func _ready() -> void:
 	button_join.pressed.connect(on_join)
-	button_quit.pressed.connect(on_quit)
+	button_quit.pressed.connect(func(): get_tree().quit())
 	
 func on_join() -> void:
 	print("JOINED LIL BRO!")
-func on_quit() -> void:
-	print("GTFO BRO!!!")
