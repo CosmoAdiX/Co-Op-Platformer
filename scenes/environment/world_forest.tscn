@@ -1,3 +1,31 @@
 [gd_scene format=3 uid="uid://p7owgavxnbl0"]
 
+[ext_resource type="Texture2D" uid="uid://bnxfh0srapee4" path="res://assets/kenney_prototype-textures/Vector/texture_08.svg" id="1_0waaa"]
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_mloxv"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b5dff"]
+albedo_texture = ExtResource("1_0waaa")
+uv1_scale = Vector3(0.5, 0.5, 0.5)
+uv1_triplanar = true
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_0waaa"]
+material = SubResource("StandardMaterial3D_b5dff")
+size = Vector2(50, 50)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_0waaa"]
+
 [node name="WorldForest" type="Node3D" unique_id=2114969977]
+
+[node name="Floor" type="StaticBody3D" parent="." unique_id=1098070870]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor" unique_id=338399404]
+shape = SubResource("WorldBoundaryShape3D_mloxv")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor" unique_id=1377254398]
+mesh = SubResource("PlaneMesh_0waaa")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=712753611]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D" unique_id=1586708630]
+mesh = SubResource("CylinderMesh_0waaa")
