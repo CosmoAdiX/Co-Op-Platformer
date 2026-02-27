@@ -1,6 +1,9 @@
 [gd_scene format=3 uid="uid://b1coqhaggbbyr"]
 
+[ext_resource type="Script" uid="uid://b0a8aqe51mogf" path="res://scenes/ui/main_menu.gd" id="1_sl1te"]
+
 [node name="MainMenu" type="CanvasLayer" unique_id=1647993442]
+script = ExtResource("1_sl1te")
 
 [node name="Control" type="Control" parent="." unique_id=585920009]
 layout_mode = 3
