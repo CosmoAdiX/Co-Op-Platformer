@@ -36,7 +36,7 @@ shape = SubResource("WorldBoundaryShape3D_mloxv")
 mesh = SubResource("PlaneMesh_0waaa")
 
 [node name="Tree" type="StaticBody3D" parent="." unique_id=712753611]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5190055, 2, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5190055, 2.4417794, 0)
 metadata/_edit_group_ = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Tree" unique_id=1586708630]
@@ -44,3 +44,26 @@ mesh = SubResource("CylinderMesh_0waaa")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Tree" unique_id=1206050024]
 shape = SubResource("CylinderShape3D_b5dff")
+
+[node name="Tree2" type="StaticBody3D" parent="." unique_id=852943549]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.44998, 2.4417794, -7.022891)
+metadata/_edit_group_ = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Tree2" unique_id=1294267095]
+mesh = SubResource("CylinderMesh_0waaa")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Tree2" unique_id=2012025333]
+shape = SubResource("CylinderShape3D_b5dff")
+
+[node name="Tree3" type="StaticBody3D" parent="." unique_id=1704827561]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.9298916, 2.4417794, 4.782795)
+metadata/_edit_group_ = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Tree3" unique_id=1228732262]
+mesh = SubResource("CylinderMesh_0waaa")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Tree3" unique_id=1728722176]
+shape = SubResource("CylinderShape3D_b5dff")
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1860180262]
+transform = Transform3D(0.80213016, 0, 0.5971493, 0, 1, 0, -0.5971493, 0, 0.80213016, 2.9673567, 2.664956, 8.831016)
