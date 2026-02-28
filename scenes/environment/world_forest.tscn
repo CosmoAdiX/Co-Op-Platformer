@@ -25,6 +25,15 @@ height = 5.0
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_b5dff"]
 height = 5.0
 
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_b5dff"]
+
+[sub_resource type="Sky" id="Sky_3pli8"]
+sky_material = SubResource("ProceduralSkyMaterial_b5dff")
+
+[sub_resource type="Environment" id="Environment_1o1l2"]
+background_mode = 2
+sky = SubResource("Sky_3pli8")
+
 [node name="WorldForest" type="Node3D" unique_id=2114969977]
 
 [node name="Floor" type="StaticBody3D" parent="." unique_id=1098070870]
@@ -66,4 +75,14 @@ mesh = SubResource("CylinderMesh_0waaa")
 shape = SubResource("CylinderShape3D_b5dff")
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=1860180262]
-transform = Transform3D(0.80213016, 0, 0.5971493, 0, 1, 0, -0.5971493, 0, 0.80213016, 2.9673567, 2.664956, 8.831016)
+transform = Transform3D(0.7814987, 0, 0.6239069, 0, 1, 0, -0.6239069, 0, 0.7814987, 4.9186144, 3.861356, 10.727324)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1232066460]
+environment = SubResource("Environment_1o1l2")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=935588744]
+transform = Transform3D(-0.43663284, 0.6561984, 0.61543113, 0.741327, -0.12513357, 0.6593753, 0.50969213, 0.7441407, -0.43182015, 10.979261, 10.226089, -4.1766005)
+light_energy = 1.5
+light_indirect_energy = 0.0
+light_angular_distance = 1.2
+shadow_enabled = true
