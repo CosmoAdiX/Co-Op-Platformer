@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://djomyauthjdyl"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_o8nba"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_wr5hl"]
+
+[node name="Player" type="CharacterBody3D" unique_id=175516912]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1375533557]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_o8nba")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=998752480]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("CapsuleMesh_wr5hl")
