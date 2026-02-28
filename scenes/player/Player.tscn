@@ -26,4 +26,4 @@ transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 1
 mesh = SubResource("CylinderMesh_o8nba")
 
 [node name="Camera3D" type="Camera3D" parent="Head" unique_id=194745025]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, -0.048440635)
