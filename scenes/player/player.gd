@@ -3,7 +3,11 @@ extends CharacterBody3D
 
 const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
+
 @onready var camera3d_1: Camera3D = %Camera3D
+@onready var head_1: Node3D = %Head
+
+@export var sensitivity: float = 0.002
 
 func _enter_tree() -> void:
 	set_multiplayer_authority(int(name))
@@ -12,6 +16,18 @@ func _ready():
 	add_to_group("Players")
 	if is_multiplayer_authority():
 		camera3d_1.current = true
+		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+
+func _unhandled_input(event: InputEvent) -> void:
+	if not is_multiplayer_authority():
+		return
+	
+	if event is InputEventMouseMotion:
+		head_1.rotate_y(-event.relative.x * sensitivity)
+		camera3d_1.rotate_x(-event.relative.y * sensitivity)
+		camera3d_1.rotation.x = clamp(camera3d_1.rotation.x, deg_to_rad(-90), deg_to_rad(90))
+	
+	
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
