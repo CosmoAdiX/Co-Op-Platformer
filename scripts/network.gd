@@ -14,6 +14,7 @@ func start_server():
 	enet_peer.create_server(PORT)
 	multiplayer.multiplayer_peer = enet_peer
 	multiplayer.peer_connected.connect(add_player)
+	multiplayer.peer_disconnected.connect(remove_player)
 	
 func join_server():
 	enet_peer.create_client(IP_ADDRESS, PORT)

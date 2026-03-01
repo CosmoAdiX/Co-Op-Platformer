@@ -6,7 +6,13 @@ const JUMP_VELOCITY = 4.5
 
 @onready var camera3d_1: Camera3D = %Camera3D
 @onready var head_1: Node3D = %Head
+#@onready var head_2: MeshInstance3D = %headNose
 @onready var nameplate_1: Label3D = %Nameplate
+
+# Player menu UI
+@onready var menu: Control = %Menu
+@onready var leave_button: Button = %LeaveButton
+
 
 @export var sensitivity: float = 0.002
 

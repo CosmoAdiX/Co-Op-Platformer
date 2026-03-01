@@ -33,7 +33,8 @@ mesh = SubResource("CapsuleMesh_wr5hl")
 [node name="Head" type="Node3D" parent="." unique_id=1166954772]
 unique_name_in_owner = true
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Head" unique_id=1264619046]
+[node name="headNose" type="MeshInstance3D" parent="Head" unique_id=1264619046]
+unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 1.5, -0.295)
 mesh = SubResource("CylinderMesh_o8nba")
 
@@ -52,3 +53,31 @@ fixed_size = true
 text = "Peer ID"
 font_size = 12
 outline_size = 6
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1247064234]
+
+[node name="Menu" type="Control" parent="CanvasLayer" unique_id=1847997923]
+unique_name_in_owner = true
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/Menu" unique_id=2016833566]
+layout_mode = 1
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Menu/PanelContainer" unique_id=1028998785]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="LeaveButton" type="Button" parent="CanvasLayer/Menu/PanelContainer/MarginContainer" unique_id=293649373]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Leave Game"
