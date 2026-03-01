@@ -20,13 +20,18 @@ func _enter_tree() -> void:
 	set_multiplayer_authority(int(name))
 
 func _ready():
-	add_to_group("Players")
-	
+	menu.hide()
+	add_to_group("Players")	
 	nameplate_1.text = name
 	
-	if is_multiplayer_authority():
-		camera3d_1.current = true
-		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	if not is_multiplayer_authority():
+		set_process(false)
+		set_physics_process(false)
+		return
+		
+	camera3d_1.current = true
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	leave_button.pressed.connect(func(): Network.leave_server())
 
 func _unhandled_input(event: InputEvent) -> void:
 	if not is_multiplayer_authority():
@@ -37,6 +42,13 @@ func _unhandled_input(event: InputEvent) -> void:
 		camera3d_1.rotate_x(-event.relative.y * sensitivity)
 		camera3d_1.rotation.x = clamp(camera3d_1.rotation.x, deg_to_rad(-90), deg_to_rad(90))
 	
+func _process(_delta: float) -> void:
+	if Input.is_action_just_pressed('menu') and menu.visible == false:
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+		menu.show()
+	elif Input.is_action_just_pressed('menu') and menu.visible == true:
+		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+		menu.hide()
 	
 
 func _physics_process(delta: float) -> void:
