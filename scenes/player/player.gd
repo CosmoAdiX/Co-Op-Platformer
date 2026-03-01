@@ -6,6 +6,7 @@ const JUMP_VELOCITY = 4.5
 
 @onready var camera3d_1: Camera3D = %Camera3D
 @onready var head_1: Node3D = %Head
+@onready var nameplate_1: Label3D = %Nameplate
 
 @export var sensitivity: float = 0.002
 
@@ -14,6 +15,9 @@ func _enter_tree() -> void:
 
 func _ready():
 	add_to_group("Players")
+	
+	nameplate_1.text = name
+	
 	if is_multiplayer_authority():
 		camera3d_1.current = true
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -41,7 +45,7 @@ func _physics_process(delta: float) -> void:
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var input_dir := Input.get_vector("left", "right", "forward", "backward")
-	var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+	var direction := (head_1.transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	if direction:
 		velocity.x = direction.x * SPEED
 		velocity.z = direction.z * SPEED

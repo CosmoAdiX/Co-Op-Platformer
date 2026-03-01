@@ -18,6 +18,17 @@ config/icon="res://icon.svg"
 [autoload]
 
 Network="*uid://dkr0ajbklsxr3"
+TileRunInstancesGlobal="*uid://b6fg6pu2bfi14"
+
+[display]
+
+window/size/viewport_width=700
+window/size/viewport_height=400
+window/vsync/vsync_mode=0
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/tile-run-instances/plugin.cfg")
 
 [file_customization]
 
