@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://bnxfh0srapee4" path="res://assets/kenney_prototype-textures/Vector/texture_08.svg" id="1_0waaa"]
 [ext_resource type="Texture2D" uid="uid://d3sy7uhplenkd" path="res://assets/kenney_prototype-textures/PNG/Green/texture_09.png" id="2_b5dff"]
+[ext_resource type="PackedScene" uid="uid://cn6fmbuyc1jyh" path="res://scenes/environment/ball.tscn" id="3_3pli8"]
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_mloxv"]
 
@@ -86,3 +87,7 @@ light_energy = 1.5
 light_indirect_energy = 0.0
 light_angular_distance = 1.2
 shadow_enabled = true
+
+[node name="Ball" parent="." unique_id=942079593 instance=ExtResource("3_3pli8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.0447173, 1, -5.496011)
+mass = 3.0
