@@ -78,7 +78,7 @@ func _physics_process(delta: float) -> void:
 	
 func shoot():
 	var facing_dir = -head_1.transform.basis.z
-	var force = 100
+	var force = 50
 	var pos = global_position
 	
 	Global.shoot_ball.rpc_id(1, pos, facing_dir, force)

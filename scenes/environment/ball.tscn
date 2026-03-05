@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://cn6fmbuyc1jyh"]
 
+[ext_resource type="Script" uid="uid://2x84jexfqgke" path="res://scenes/environment/ball.gd" id="1_2e5o0"]
 [ext_resource type="Texture2D" uid="uid://cms2dod7g0ev7" path="res://assets/kenney_prototype-textures/PNG/Red/texture_08.png" id="1_jnxa0"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_25a7t"]
@@ -22,8 +23,12 @@ properties/2/path = NodePath(".:collision_layer")
 properties/2/spawn = true
 properties/2/replication_mode = 1
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_sblyl"]
+radius = 0.6
+
 [node name="Ball" type="RigidBody3D" unique_id=942079593]
 collision_layer = 0
+script = ExtResource("1_2e5o0")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=626874666]
 shape = SubResource("SphereShape3D_25a7t")
@@ -41,3 +46,10 @@ fixed_size = true
 text = "1"
 font_size = 24
 outline_size = 8
+
+[node name="Area3D" type="Area3D" parent="." unique_id=1434968297]
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=236017329]
+shape = SubResource("SphereShape3D_sblyl")
