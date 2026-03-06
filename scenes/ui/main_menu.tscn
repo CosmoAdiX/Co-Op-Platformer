@@ -40,20 +40,20 @@ theme_override_constants/margin_bottom = 20
 layout_mode = 2
 theme_override_constants/separation = 25
 
-[node name="ENet" type="VBoxContainer" parent="Control/Centre/MarginContainer/HBoxContainer" unique_id=1697954622]
+[node name="ENetMenu" type="VBoxContainer" parent="Control/Centre/MarginContainer/HBoxContainer" unique_id=1697954622]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="Label" type="Label" parent="Control/Centre/MarginContainer/HBoxContainer/ENet" unique_id=2068883596]
+[node name="Label" type="Label" parent="Control/Centre/MarginContainer/HBoxContainer/ENetMenu" unique_id=2068883596]
 layout_mode = 2
 text = "Co-Op Platformer Bruh."
 
-[node name="ButtonJoin" type="Button" parent="Control/Centre/MarginContainer/HBoxContainer/ENet" unique_id=496729925]
+[node name="ButtonJoin" type="Button" parent="Control/Centre/MarginContainer/HBoxContainer/ENetMenu" unique_id=496729925]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Join"
 
-[node name="ButtonQuit" type="Button" parent="Control/Centre/MarginContainer/HBoxContainer/ENet" unique_id=495565329]
+[node name="ButtonQuit" type="Button" parent="Control/Centre/MarginContainer/HBoxContainer/ENetMenu" unique_id=495565329]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Quit"
@@ -72,6 +72,7 @@ layout_mode = 2
 text = "Session ID :"
 
 [node name="LineEditSession" type="LineEdit" parent="Control/Centre/MarginContainer/HBoxContainer/TubeMenu" unique_id=873723184]
+unique_name_in_owner = true
 layout_mode = 2
 
 [node name="LabelUsername" type="Label" parent="Control/Centre/MarginContainer/HBoxContainer/TubeMenu" unique_id=1168728994]
@@ -79,7 +80,9 @@ layout_mode = 2
 text = "Username :"
 
 [node name="LineEditUsername" type="LineEdit" parent="Control/Centre/MarginContainer/HBoxContainer/TubeMenu" unique_id=1735810191]
+unique_name_in_owner = true
 layout_mode = 2
+max_length = 12
 
 [node name="HSeparator" type="HSeparator" parent="Control/Centre/MarginContainer/HBoxContainer/TubeMenu" unique_id=581748985]
 layout_mode = 2
