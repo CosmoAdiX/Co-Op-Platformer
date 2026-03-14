@@ -12,7 +12,7 @@ var tube_enabled = true
 var enet_peer :=ENetMultiplayerPeer.new()
 
 var PORT = 9999
-var IP_ADDRESS = '127.0.0.1'
+var IP_ADDRESS = '35.196.112.233'
 
 
 func _ready() -> void:
