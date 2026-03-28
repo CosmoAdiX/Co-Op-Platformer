@@ -3,45 +3,42 @@ extends CanvasLayer
 @onready var button_join: Button = %ButtonJoin
 @onready var button_quit: Button = %ButtonQuit
 
-#buttons and input sections
-@onready var line_edit_ses: LineEdit = %LineEditSession
+@onready var line_edit_session: LineEdit = %LineEditSession
 @onready var line_edit_username: LineEdit = %LineEditUsername
-@onready var button_joinTube: Button = %ButtonJoinTube
-@onready var button_quitTube: Button = %ButtonQuitTube
-@onready var button_createTube: Button = %ButtonCreateTube
+@onready var button_join_tube: Button = %ButtonJoinTube
+@onready var button_quit_tube: Button = %ButtonQuitTube
+@onready var button_create_tube: Button = %ButtonCreateTube
 
-# tables
-@onready var enet_menu: VBoxContainer = %ENetMenu
+@onready var enet_menu: VBoxContainer = %EnetMenu
 @onready var tube_menu: VBoxContainer = %TubeMenu
 
-
-const WORLD_FOREST = preload("uid://p7owgavxnbl0")
-const PLAYER = preload("uid://djomyauthjdyl")
+const WORLD_FOREST = preload("uid://yubh30707eb7")
+const PLAYER = preload("uid://dbcqeo103wau6")
 
 func _ready() -> void:
 	if Network.tube_enabled:
 		enet_menu.hide()
 	else:
 		tube_menu.hide()
-	
+
 	button_join.pressed.connect(on_join)
 	button_quit.pressed.connect(func(): get_tree().quit())
-	
-	line_edit_ses.text_changed.connect(update_session)
+
+	line_edit_session.text_changed.connect(update_session)
 	line_edit_username.text_changed.connect(update_username)
-	button_joinTube.disabled = true
-	button_joinTube.pressed.connect(on_join_tube)
-	button_quitTube.pressed.connect(func(): get_tree().quit())
-	button_createTube.pressed.connect(on_create_tube)
+	button_join_tube.disabled = true
+	button_join_tube.pressed.connect(on_join_tube)
+	button_quit_tube.pressed.connect(func(): get_tree().quit())
+	button_create_tube.pressed.connect(on_create_tube)
 	
 	Network.tube_client.error_raised.connect(on_error_raised)
-	
+
 	if OS.has_feature('server'):
 		Network.start_server()
 		await get_tree().create_timer(0.1).timeout
 		add_world()
-	
-func on_join() -> void:
+
+func on_join():
 	Network.join_server()
 	add_world()
 
@@ -51,7 +48,7 @@ func add_world():
 	hide()
 
 func on_join_tube():
-	Network.tube_join(line_edit_ses.text)
+	Network.tube_join(line_edit_session.text)
 	multiplayer.connected_to_server.connect(add_world)
 
 func on_create_tube():
@@ -60,18 +57,13 @@ func on_create_tube():
 
 func update_session(new_text: String):
 	if new_text != '':
-		button_joinTube.disabled = false
+		button_join_tube.disabled = false
 
 func update_username(new_text: String):
 	Global.username = new_text
-	
-	
+
 func on_error_raised(_code, _message):
-	line_edit_ses.text = ''
-	button_joinTube.add_theme_color_override('font_disabled_color', Color.DARK_RED)
-	button_joinTube.disabled = true
+	line_edit_session.text = ''
+	button_join_tube.add_theme_color_override('font_disabled_color', Color.DARK_RED)
+	button_join_tube.disabled = true
 	Network.clean_up_signals()
-	
-	
-	
-	

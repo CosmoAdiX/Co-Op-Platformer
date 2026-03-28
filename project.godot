@@ -10,22 +10,20 @@ config_version=5
 
 [application]
 
-config/name="Co-op_Multiplayer"
-run/main_scene="uid://b1coqhaggbbyr"
-config/features=PackedStringArray("4.6", "Forward Plus")
-config/icon="res://icon.svg"
+config/name="Co-Op Multiplayer"
+run/main_scene="uid://drhjatayvlkyv"
+config/features=PackedStringArray("4.6", "GL Compatibility")
+config/icon="uid://cateu5bxe5nab"
 
 [autoload]
 
-Network="*uid://dkr0ajbklsxr3"
+Network="*uid://bhyh5d2so8tve"
 TileRunInstancesGlobal="*uid://b6fg6pu2bfi14"
-Global="*uid://cu8jjsehm2xmi"
+Global="*uid://d1r3eqtrbojy0"
 
 [display]
 
-window/size/viewport_width=700
-window/size/viewport_height=400
-window/vsync/vsync_mode=0
+window/size/always_on_top=true
 
 [editor_plugins]
 
@@ -35,10 +33,13 @@ enabled=PackedStringArray("res://addons/tile-run-instances/plugin.cfg", "res://a
 
 folder_colors={
 "res://assets/": "green",
-"res://fonts/": "blue",
 "res://scenes/": "red",
 "res://scripts/": "yellow"
 }
+
+[gui]
+
+theme/default_font_multichannel_signed_distance_field=true
 
 [input]
 
@@ -74,7 +75,7 @@ menu={
 }
 shoot={
 "deadzone": 0.2,
-"events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":1,"position":Vector2(192, 17),"global_position":Vector2(201, 65),"factor":1.0,"button_index":1,"canceled":false,"pressed":true,"double_click":false,"script":null)
+"events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":1,"position":Vector2(299, 21),"global_position":Vector2(318, 117),"factor":1.0,"button_index":1,"canceled":false,"pressed":true,"double_click":true,"script":null)
 ]
 }
 
@@ -85,5 +86,4 @@ shoot={
 [rendering]
 
 rendering_device/driver.windows="d3d12"
-textures/vram_compression/import_s3tc_bptc=true
 textures/vram_compression/import_etc2_astc=true

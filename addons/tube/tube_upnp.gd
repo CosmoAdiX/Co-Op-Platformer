@@ -25,7 +25,6 @@ func raise_warning(message: String):
 	push_warning(message)
 	warning_raised.emit(message)
 
-
 func _init() -> void:
 	if OS.get_name() == "Web":
 		return
