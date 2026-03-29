@@ -11,16 +11,14 @@ const JUMP_VELOCITY = 4.5
 @onready var head: Node3D = %Head
 @onready var nameplate: Label3D = %Nameplate
 
-@onready var menu: Control = %Menu
-@onready var button_leave: Button = %ButtonLeave
-@onready var label_session: Label = %LabelSession
-@onready var button_copy_session: Button = %ButtonCopySession
 
-@onready var canvas_layer: CanvasLayer = %CanvasLayer
-@onready var hit_marker: Label = %HitMarker
 
 @onready var sound_hit: AudioStreamPlayer = %SoundHit
 @onready var sound_ping: AudioStreamPlayer = %SoundPing
+@onready var player_ui: CanvasLayer = %Player_UI
+
+@onready var player_avatar1: Node3D = %AnimationLibrary_Godot_Standard
+@export var animation_player: AnimationPlayer
 
 var immobile := false
 
@@ -28,25 +26,22 @@ func _enter_tree() -> void:
 	set_multiplayer_authority(int(name))
 
 func _ready():
-	menu.hide()
 	add_to_group("Players")
 	nameplate.text = name
-	hit_marker.hide()
 	
 	if not is_multiplayer_authority():
 		set_process(false)
 		set_physics_process(false)
-		canvas_layer.hide()
 		return
 	
-	if Global.username: nameplate.text = Global.username
-	
-	label_session.text = Network.tube_client.session_id
+	ready_client_visuals()
+
+func ready_client_visuals():
+	player_avatar1.hide()
+	if Global.username: 
+		nameplate.text = Global.username
 	camera_3d.current = true
-	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-	button_leave.pressed.connect(func(): Network.leave_server())
-	button_copy_session.pressed.connect(func(): DisplayServer.clipboard_set(Network.tube_client.session_id))
-	DisplayServer.clipboard_set(Network.tube_client.session_id)
+	
 
 func _unhandled_input(event: InputEvent) -> void:
 	if not is_multiplayer_authority() or immobile:
@@ -59,7 +54,7 @@ func _unhandled_input(event: InputEvent) -> void:
 
 func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed('menu'):
-		open_menu(menu.visible)
+		open_menu(player_ui.menu.visible)
 		
 	if immobile:
 		return
@@ -68,11 +63,11 @@ func _process(_delta: float) -> void:
 		shoot()	
 
 func open_menu(current_visibility: bool):
-	menu.visible = !current_visibility
+	player_ui.menu.visible = !current_visibility
 	
-	immobile = menu.visible
+	immobile = player_ui.menu.visible
 
-	if menu.visible:
+	if player_ui.menu.visible:
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	else:
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -122,6 +117,6 @@ func register_hit(is_dead = false):
 	else:
 		sound_hit.play()
 	
-	hit_marker.show()
+	player_ui.hit_marker.show()
 	await get_tree().create_timer(0.2).timeout
-	hit_marker.hide()
+	player_ui.hit_marker.hide()
