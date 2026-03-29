@@ -7,6 +7,7 @@ extends CharacterBody3D
 func _ready():
 	add_to_group('Targets')
 	look_at(goal_position)
+	
 
 func take_damage(damage: int, source: int):
 	var next_health = health - damage
