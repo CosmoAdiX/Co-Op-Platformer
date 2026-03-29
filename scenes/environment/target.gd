@@ -11,7 +11,6 @@ func _ready():
 	animation_player_dummy.playback_default_blend_time = 0.25
 	add_to_group('Targets')
 	look_at(goal_position)
-	
 
 func take_damage(damage: int, source: int):
 	var next_health = health - damage
