@@ -28,6 +28,7 @@ func _enter_tree() -> void:
 func _ready():
 	add_to_group("Players")
 	nameplate.text = name
+	animation_player.playback_default_blend_time = 0.25
 	
 	if not is_multiplayer_authority():
 		set_process(false)
@@ -97,7 +98,18 @@ func _physics_process(delta: float) -> void:
 		velocity.z = move_toward(velocity.z, 0, SPEED)
 
 	move_and_slide()
+	handle_animation(direction)
 	
+func handle_animation(direction: Vector3):
+	if velocity.y == 0.0:
+		if direction.x != 0.0 or direction.y != 0.0:
+			animation_player.play("Jog_Fwd")
+		else:
+			animation_player.play("Idle")
+	else:
+		animation_player.play("Jump")
+		
+		
 func shoot():
 	var force = 100
 	var pos = global_position
