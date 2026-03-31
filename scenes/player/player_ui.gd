@@ -31,3 +31,6 @@ func _ready() -> void:
 	button_copy_session.pressed.connect(func(): DisplayServer.clipboard_set(Network.tube_client.session_id))
 	DisplayServer.clipboard_set(Network.tube_client.session_id)
 	label_session.text = Network.tube_client.session_id
+	
+	for single_color in COLORS:
+		pass
