@@ -17,7 +17,7 @@ var COLORS: Array[Color] = [
 	Color.BLACK,
 	Color.SADDLE_BROWN,
 	Color.DIM_GRAY,
-	#Color.AQUAMARINE
+	Color.AQUAMARINE
 ]
 
 # Called when the node enters the scene tree for the first time. Ok
