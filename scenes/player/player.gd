@@ -31,10 +31,6 @@ func _ready():
 	nameplate.text = name
 	animation_player.playback_default_blend_time = 0.25
 	
-	var material: StandardMaterial3D = player_mesh.get_active_material(0)
-	var new_material = material.duplicate()
-	new_material.albedo_color = Color.CYAN
-	player_mesh.set_surface_override_material(0, new_material)
 	
 	if not is_multiplayer_authority():
 		set_process(false)
@@ -141,6 +137,11 @@ func register_hit(is_dead = false):
 	player_ui.hit_marker.hide()
 
 func on_color_changed(new_item: int):
-	player_ui.COLORS[new_item]
-	print("===================================== COLOR SELECTED BRUH!!! =====================================")
+	replicate_color_changed()
+	print("===================================== COLOR SELECTED BRUH!!! =====================================", str(player_ui.COLORS[new_item]))
 	
+func replicate_color_changed():
+	var material: StandardMaterial3D = player_mesh.get_active_material(0)
+	var new_material = material.duplicate()
+	new_material.albedo_color = Color.CYAN
+	player_mesh.set_surface_override_material(0, new_material)
