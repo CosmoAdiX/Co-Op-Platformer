@@ -15,7 +15,7 @@ const JUMP_VELOCITY = 4.5
 
 @onready var sound_hit: AudioStreamPlayer = %SoundHit
 @onready var sound_ping: AudioStreamPlayer = %SoundPing
-@onready var player_ui: CanvasLayer = %Player_UI
+@onready var player_ui: PlayerUI = %Player_UI
 
 @onready var player_avatar1: Node3D = %AnimationLibrary_Godot_Standard
 @export var animation_player: AnimationPlayer
@@ -44,6 +44,7 @@ func _ready():
 	ready_client_visuals()
 
 func ready_client_visuals():
+	player_ui.option_button_color.item_selected(on_color_changed)
 	player_avatar1.hide()
 	if Global.username: 
 		nameplate.text = Global.username
@@ -138,3 +139,6 @@ func register_hit(is_dead = false):
 	player_ui.hit_marker.show()
 	await get_tree().create_timer(0.2).timeout
 	player_ui.hit_marker.hide()
+
+func on_color_changed():
+	pass

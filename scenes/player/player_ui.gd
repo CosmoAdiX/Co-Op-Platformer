@@ -1,5 +1,7 @@
 extends CanvasLayer
 
+class_name PlayerUI
+
 @onready var menu: Control = %Menu
 @onready var button_leave: Button = %ButtonLeave
 @onready var label_session: Label = %LabelSession
