@@ -142,4 +142,4 @@ func register_hit(is_dead = false):
 
 func on_color_changed(new_item: int):
 	player_ui.COLORS[new_item]
-	print("hello bruh")
+	
