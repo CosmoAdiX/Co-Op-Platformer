@@ -143,5 +143,5 @@ func on_color_changed(new_item: int):
 func replicate_color_changed(new_color: Color):
 	var material: StandardMaterial3D = player_mesh.get_active_material(0)
 	var new_material = material.duplicate()
-	new_material.albedo_color = Color.CYAN
+	new_material.albedo_color = new_color
 	player_mesh.set_surface_override_material(0, new_material)
