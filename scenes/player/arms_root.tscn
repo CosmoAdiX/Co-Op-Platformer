@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://ct3niy3bnyn7u" path="res://assets/models/arm_model/arm_model.glb" id="1_qmapn"]
 [ext_resource type="PackedScene" uid="uid://ckmx5487j45kh" path="res://assets/models/sword/Sword.glb" id="2_eeivl"]
+[ext_resource type="AnimationLibrary" uid="uid://cj3elpkn0e5kq" path="res://assets/models/arm_model/arm_model_animations.res" id="3_qkl4s"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_qkl4s"]
 size = Vector3(0.5, 2.314392, 0.09)
@@ -15,15 +16,22 @@ transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0.4,
 
 [node name="TwoBoneIK3D" type="TwoBoneIK3D" parent="RightArm/arm_model/Armature/Skeleton3D" parent_id_path=PackedInt32Array(1812396674, 2132489636) index="1" unique_id=744241008]
 setting_count = 1
-settings/0/target_node = NodePath("")
-settings/0/pole_node = NodePath("")
-settings/0/root_bone_name = ""
-settings/0/root_bone = -1
-settings/0/middle_bone_name = ""
-settings/0/middle_bone = -1
+settings/0/target_node = NodePath("../../../../../Weapon/TargetRight")
+settings/0/pole_node = NodePath("../../PoleRight")
+settings/0/root_bone_name = "Bone"
+settings/0/root_bone = 0
+settings/0/middle_bone_name = "Bone.001"
+settings/0/middle_bone = 1
 settings/0/pole_direction = 0
-settings/0/end_bone_name = ""
-settings/0/end_bone = -1
+settings/0/end_bone_name = "Bone.002"
+settings/0/end_bone = 2
+settings/0/use_virtual_end = false
+settings/0/extend_end_bone = true
+settings/0/end_bone/direction = 6
+settings/0/end_bone/length = 0.085
+
+[node name="PoleRight" type="Marker3D" parent="RightArm/arm_model/Armature" parent_id_path=PackedInt32Array(1812396674, 1235633718) index="1" unique_id=1298794510]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.15811065, -0.61276484, 1.9119316)
 
 [node name="LeftArm" type="Node3D" parent="." unique_id=1820579575]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -0.525, -0.35, 0)
@@ -31,16 +39,34 @@ transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -0.5
 [node name="arm_model" parent="LeftArm" unique_id=1780299455 instance=ExtResource("1_qmapn")]
 
 [node name="TwoBoneIK3D" type="TwoBoneIK3D" parent="LeftArm/arm_model/Armature/Skeleton3D" parent_id_path=PackedInt32Array(1780299455, 2132489636) index="1" unique_id=751511283]
+setting_count = 1
+settings/0/target_node = NodePath("../../../../../Weapon/TargetLeft")
+settings/0/pole_node = NodePath("../../PoleLeft")
+settings/0/root_bone_name = "Bone"
+settings/0/root_bone = 0
+settings/0/middle_bone_name = "Bone.001"
+settings/0/middle_bone = 1
+settings/0/pole_direction = 0
+settings/0/end_bone_name = "Bone.002"
+settings/0/end_bone = 2
+settings/0/use_virtual_end = false
+settings/0/extend_end_bone = true
+settings/0/end_bone/direction = 6
+settings/0/end_bone/length = 0.085
+
+[node name="PoleLeft" type="Marker3D" parent="LeftArm/arm_model/Armature" parent_id_path=PackedInt32Array(1780299455, 1235633718) index="1" unique_id=1003225495]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6870057, -2.1578913, -2.0022478)
 
 [node name="Weapon" type="Node3D" parent="." unique_id=1644686935]
+transform = Transform3D(0.9931258, 0.11705205, 0, -0.11705205, 0.9931258, 0, 0, 0, 1, 0.33617833, -0.52601266, -1.1528939)
 
 [node name="Root Scene" parent="Weapon" unique_id=584586117 instance=ExtResource("2_eeivl")]
 
 [node name="TargetRight" type="Marker3D" parent="Weapon" unique_id=465094516]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.07899982, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0015518963, -0.065832764, 0.0022268295)
 
 [node name="TargetLeft" type="Marker3D" parent="Weapon" unique_id=2086354834]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.058470666, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0070506036, 0.11829126, 0)
 
 [node name="Area3D" type="Area3D" parent="Weapon" unique_id=996428394]
 
@@ -49,6 +75,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7772522, 0)
 shape = SubResource("BoxShape3D_qkl4s")
 
 [node name="WeaponAnimationPlayer" type="AnimationPlayer" parent="." unique_id=1232260874]
+libraries/arm_model_animations = ExtResource("3_qkl4s")
 
 [editable path="RightArm/arm_model"]
 [editable path="LeftArm/arm_model"]
