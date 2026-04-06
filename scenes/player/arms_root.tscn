@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://rtfwth3swrem"]
+
+[ext_resource type="PackedScene" uid="uid://ct3niy3bnyn7u" path="res://assets/models/arm_model/arm_model.glb" id="1_qmapn"]
+
+[node name="ArmsRoot" type="Node3D" unique_id=90471785]
+
+[node name="RightArm" type="Node3D" parent="." unique_id=1294248183]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0.4, -0.35, 0)
+
+[node name="arm_model" parent="RightArm" unique_id=1812396674 instance=ExtResource("1_qmapn")]
+
+[node name="LeftArm" type="Node3D" parent="." unique_id=1820579575]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -0.525, -0.35, 0)
+
+[node name="arm_model" parent="LeftArm" unique_id=1780299455 instance=ExtResource("1_qmapn")]
+
+[node name="Weapon" type="Node3D" parent="." unique_id=1644686935]
+
+[node name="WeaponAnimationPlayer" type="AnimationPlayer" parent="." unique_id=1232260874]
+
+[editable path="RightArm/arm_model"]
+[editable path="LeftArm/arm_model"]
