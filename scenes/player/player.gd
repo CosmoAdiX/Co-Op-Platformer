@@ -24,7 +24,7 @@ const JUMP_VELOCITY = 4.5
 # Adding the arm with sword and animating it.
 @onready var arm_root1: Node3D = %ArmsRoot
 @export var weapon_animation: AnimationPlayer
-@export var hurt_box: Area3D
+@export var hurt_box: HurtBox
 
 var immobile := false
 
@@ -171,6 +171,12 @@ func replicate_color_changed(new_color: Color):
 func attack(version: int):
 	if weapon_animation.current_animation.begins_with("arm_model_animations/swing"):
 		return
+	
+	if version == 1:
+		hurt_box.current_damage = 25
+	elif version == 2:
+		hurt_box.current_damage = 50
+	hurt_box.bodies_hit.clear()
 	
 	animation_player.stop()
 	animation_player.play("Sword_Attack")
