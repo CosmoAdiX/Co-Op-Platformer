@@ -26,13 +26,15 @@ properties/3/path = NodePath("Head/AnimationLibrary_Godot_Standard/AnimationPlay
 properties/3/spawn = true
 properties/3/replication_mode = 1
 
-[node name="Player" type="CharacterBody3D" unique_id=1582534974 node_paths=PackedStringArray("animation_player", "player_mesh", "weapon_animation", "hurt_box")]
+[node name="Player" type="CharacterBody3D" unique_id=1582534974 node_paths=PackedStringArray("animation_player", "player_mesh", "weapon_animation", "hurt_box", "arm_mesh_right", "arm_mesh_left")]
 collision_layer = 9
 script = ExtResource("1_wr5hl")
 animation_player = NodePath("Head/AnimationLibrary_Godot_Standard/AnimationPlayer")
 player_mesh = NodePath("Head/AnimationLibrary_Godot_Standard/Rig/Skeleton3D/Mannequin")
 weapon_animation = NodePath("Head/Camera3D/ArmsRoot/WeaponAnimationPlayer")
 hurt_box = NodePath("Head/Camera3D/ArmsRoot/Weapon/HurtBox")
+arm_mesh_right = NodePath("Head/Camera3D/ArmsRoot/RightArm/arm_model/Armature/Skeleton3D/Cube")
+arm_mesh_left = NodePath("Head/Camera3D/ArmsRoot/LeftArm/arm_model/Armature/Skeleton3D/Cube")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1789704607]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.90844727, 0)

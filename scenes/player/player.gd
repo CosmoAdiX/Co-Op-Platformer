@@ -26,6 +26,9 @@ const JUMP_VELOCITY = 4.5
 @export var weapon_animation: AnimationPlayer
 @export var hurt_box: HurtBox
 
+@export var arm_mesh_right: MeshInstance3D
+@export var arm_mesh_left: MeshInstance3D
+
 var immobile := false
 
 func _enter_tree() -> void:
@@ -36,6 +39,8 @@ func _ready():
 	nameplate.text = name
 	animation_player.playback_default_blend_time = 0.25
 	arm_root1.hide()
+	replicate_color_changed(player_ui.COLORS[0])
+	player_ui.hide()
 	
 	
 	if not is_multiplayer_authority():
@@ -46,6 +51,7 @@ func _ready():
 	ready_client_visuals()
 
 func ready_client_visuals():
+	player_ui.show()
 	arm_root1.show()
 	weapon_animation.playback_default_blend_time = 0.25
 	weapon_animation.speed_scale = 0.7
@@ -167,6 +173,8 @@ func replicate_color_changed(new_color: Color):
 	var new_material = material.duplicate()
 	new_material.albedo_color = new_color
 	player_mesh.set_surface_override_material(0, new_material)
+	arm_mesh_right.set_surface_override_material(0, new_material)
+	arm_mesh_left.set_surface_override_material(0, new_material)
 	
 func attack(version: int):
 	if weapon_animation.current_animation.begins_with("arm_model_animations/swing"):
